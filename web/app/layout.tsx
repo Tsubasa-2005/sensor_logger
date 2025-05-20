@@ -27,7 +27,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <header className="header">
+          <h1>Sensor Logger</h1>
+        </header>
+        <main className="main">{children}</main>
+        <footer className="footer">
+          <p>&copy; 2025 Sensor Logger</p>
+        </footer>
       </body>
     </html>
   );
