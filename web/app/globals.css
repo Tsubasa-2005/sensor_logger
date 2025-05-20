@@ -24,3 +24,66 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.data-list {
+  list-style: none;
+  padding: 0;
+}
+
+.data-item {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.data-field {
+  margin-bottom: 5px;
+}
+
+.data-key {
+  font-weight: bold;
+}
+
+.data-value {
+  margin-left: 5px;
+}
+
+.no-data {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  color: #888;
+}
+
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.main {
+  padding: 20px;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
