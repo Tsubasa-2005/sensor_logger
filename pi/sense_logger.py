@@ -1,18 +1,14 @@
 from datetime import datetime, timezone
-import smbus2
-import bme280
+from sense_hat import SenseHat
 
-DEFAULT_PORT = 0x76
+sense = SenseHat()
 
 def get_sensor_data():
     """センサーデータを辞書で返す"""
     try:
-        bus = smbus2.SMBus(1)
-        calibration_params = bme280.load_calibration_params(bus, address=DEFAULT_PORT)
-        data = bme280.sample(bus, address=DEFAULT_PORT, compensation_params=calibration_params)
-        temperature = data.temperature
-        humidity = data.humidity
-        pressure = data.pressure
+        temperature = sense.get_temperature()
+        humidity = sense.get_humidity()
+        pressure = sense.get_pressure()
         return {
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "temperature": round(temperature, 2),
