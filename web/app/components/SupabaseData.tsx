@@ -10,7 +10,7 @@ const supabaseTableName = process.env.NEXT_PUBLIC_SUPABASE_TABLE_NAME || '';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const SupabaseData = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any[]>([]);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
