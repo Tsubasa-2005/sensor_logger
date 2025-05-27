@@ -17,16 +17,17 @@
 ## セットアップ手順
 
 1.  リポジトリをクローンします。
-2.  必要な依存関係をインストールします。
-    ```bash
-    cd web
-    npm install
-    cd ../pi
-    pip install -r requirements.txt
-    ```
-3.  環境変数を設定します。
+2.  環境変数を設定します。
     *   SupabaseのAPIキー
     *   その他必要な環境変数
+        *   `SUPABASE_URL`: SupabaseのURL
+        *   `SUPABASE_KEY`: SupabaseのAPIキー
+        *   `TABLE_NAME`: データを保存するテーブル名
+
+3.  `make setup`コマンドを実行して、必要な依存関係をインストールします。このコマンドは、必要なPythonパッケージをインストールし、`run.sh`と`setup_cron.sh`に実行権限を与え、`setup_cron.sh`を実行します。
+    ```bash
+    make setup
+    ```
 
 ## 使用方法
 
@@ -35,10 +36,10 @@
     cd web
     npm run dev
     ```
-2.  IoTデバイスからデータを送信します。
+2.  IoTデバイスからデータを送信します。`main.py`でデータ取得、Supabase送信を統合しているため、`sensor_logger.py`を直接実行する必要はありません。
     ```bash
     cd pi
-    python sense_logger.py
+    python main.py
     ```
 
 ## ライセンス情報
