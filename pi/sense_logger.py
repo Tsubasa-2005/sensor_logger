@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 class SenseHat:
     def get_temperature(self):
@@ -15,7 +15,7 @@ sense = SenseHat()
 def get_sensor_data():
     """センサーデータを辞書で返す"""
     return {
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "temperature": round(sense.get_temperature(), 2),
         "humidity": round(sense.get_humidity(), 2),
         "pressure": round(sense.get_pressure(), 2),
