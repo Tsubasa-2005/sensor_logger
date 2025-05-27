@@ -19,6 +19,8 @@ def test_create_supabase_client():
     client = create_supabase_client()
     assert client is not None
 
+import asyncio
+
 @pytest.mark.asyncio
 async def test_insert_sensor_data(mocker):
     # モックの Supabase クライアントを作成
@@ -35,17 +37,17 @@ async def test_insert_sensor_data(mocker):
     execute_mock.count = 1
 
     # insert_sensor_data 関数を呼び出し
-    data, count = insert_sensor_data(supabase_mock, {"test": "data"})
+    count = insert_sensor_data(supabase_mock, {"test": "data"}, "test_table")
 
     # モックが正しく呼び出されたことを確認
     supabase_mock.table.assert_called_once()
     table_mock.insert.assert_called_once()
     insert_mock.execute.assert_called_once()
-    assert data == ([{"test": "data"}],)
     assert count == 1
 
 # 実際にリクエストを出すテストは、環境変数が設定されている場合にのみ実行する
-def test_insert_sensor_data_real():
+@pytest.mark.asyncio
+async def test_insert_sensor_data_real():
     supabase = create_supabase_client()
     # 外部の get_sensor_data を使用する代わりに、適当なデータを使用する
     sensor_data = {
